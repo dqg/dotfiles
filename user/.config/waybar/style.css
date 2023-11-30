@@ -1,0 +1,91 @@
+* {
+	font-family: JetBrainsMono NF;
+	font-size: 10px;
+}
+
+window#waybar {
+	background-color: #181825;
+}
+
+#workspaces button {
+	all: initial;
+	margin: 6px 3px;
+	padding: 6px 18px;
+	border-radius: 3px;
+	color: #cdd6f4;
+	background-color: #1e1e2e;
+}
+
+#workspaces button.active {
+	color: #1e1e2e;
+	background-color: #cdd6f4;
+}
+
+#workspaces button:hover {
+	color: #1e1e2e;
+	background-color: #cdd6f4;
+}
+
+#custom-logo {
+	padding: 6px 18px;
+	background-image: url("/home/user/.local/share/artix.png");
+	background-size: 70%;
+	background-position: center;
+	background-repeat: no-repeat;
+}
+
+#custom-weather,
+#tray,
+#battery,
+#custom-updates,
+#pulseaudio,
+#memory,
+#network,
+#custom-clock,
+#clock {
+	margin: 6px 3px;
+	padding: 6px 12px;
+	border-radius: 3px;
+	color: #181825;
+	background-color: #1e1e2e;
+}
+
+#custom-clock {
+	background-color: #cba6f7;
+}
+
+#clock {
+	background-color: #89b4fa;
+}
+
+#network {
+	background-color: #94e2d5;
+}
+
+#memory {
+	background-color: #a6e3a1;
+}
+
+#pulseaudio{
+	background-color: #f9e2af;
+}
+
+#custom-updates {
+	background-color: #fab387;
+}
+
+#battery {
+	background-color: #f38ba8;
+}
+
+#custom-weather {
+	color: #cdd6f4;
+}
+
+tooltip {
+	border-radius: 6px;
+}
+
+tooltip label {
+	padding: 10px;
+}

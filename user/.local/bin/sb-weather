@@ -1,0 +1,10 @@
+#!/bin/sh
+
+weather=$(curl -s "wttr.in/Kandana?format=1")
+if [ -n "$weather" ]; then
+	echo "$weather"
+	echo "$weather" >/tmp/weather
+	[ -s $XDG_CACHE_HOME/weather ] && [ "$(stat -c %y $XDG_CACHE_HOME/weather | cut -d ' ' -f 1)" = "$(date '+%Y-%m-%d')" ] || curl -s "wttr.in/Kandana" >$XDG_CACHE_HOME/weather
+else
+	cat /tmp/weather 2>/dev/null || echo "❌"
+fi

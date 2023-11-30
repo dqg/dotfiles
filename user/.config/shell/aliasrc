@@ -1,0 +1,46 @@
+#!/bin/sh
+
+ll() { ls -Fahl --color=always --group-directories-first --time-style="+%Y/%m/%d" $@ | grep -v "^total"; }
+rg() { doas grep --color=always --exclude-dir=.git --exclude-dir=.cache -nr $1 $(echo * .* | sed "s/\.\?\*//g") 2>/dev/null; }
+sdu() {
+	doas du -Lh -d 1 $@ 2>/dev/null | sort -hr |
+	sed "/^[0-9.]*G/s/^/[31m/
+	/^[0-9.]*M/s/^/[33m/
+	/^[0-9]/s/^/[32m/
+	s/\t\(\.\/\)\?/\t[1;34m/
+	s/$/[0m/"
+}
+
+manall() {
+	rm /tmp/output
+	for x in 1 2 3 4 5 6 7 8; do
+		man $x $1 >>/tmp/output 2>/dev/null
+	done; unset x
+	[ -s "/tmp/output" ] && LESS="--prompt=\ Manual page $1(all) line %l?L/%L ?e(END):%p\%" bat -p -l man /tmp/output
+}
+unpkg() { tar --zstd -xf $1 -C /tmp && mv -v /tmp/usr .; }
+txz() { XZ_OPT="-9" tar -Jcvf $1.txz $1; }
+
+for x in chown chmod shutdown reboot mount umount ln su vi cfdisk find pacman; do
+  alias $x="doas $x"
+done; unset x
+
+alias \
+	man="manall" \
+	ls="ls -Fa --color=auto --group-directories-first" \
+	grep="grep --color=auto" \
+	diff="diff -s --color=auto" \
+	cp="doas cp -iv --preserve=ownership" \
+	mv="doas mv -iv" \
+	rm="doas rm -Iv" \
+	sdn="shutdown -h now" \
+	ka="killall" \
+	p="pacman" \
+	v="nvim" \
+	dv="doas nvim" \
+	gst="git status -sb" \
+	ga="git add" \
+	gr="git rm" \
+	gu="git restore --staged" \
+	gc="git commit --allow-empty-message -m \"\"" \
+	gp="git push"

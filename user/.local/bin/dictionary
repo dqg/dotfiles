@@ -1,0 +1,61 @@
+#!/bin/bash
+
+XDG_CACHE_HOME="/home/user/.cache"
+[ -d "$XDG_CACHE_HOME/dictionary" ] || mkdir -p $XDG_CACHE_HOME/dictionary
+
+case $1 in
+	-1)
+	echo {z,y,x,w,v,u,t,s,r,q,p,o,n,m,l,k,j,i,h,g,f,e,d,c,b,a,0,1,2,3,4,5,6,7,8,9} |
+	tr " " "\n" >$XDG_CACHE_HOME/dictionary/dictionary-1
+	head -1 $XDG_CACHE_HOME/dictionary/dictionary-1
+	tail -1 $XDG_CACHE_HOME/dictionary/dictionary-1
+	;;
+	-2)
+	echo {z,y,x,w,v,u,t,s,r,q,p,o,n,m,l,k,j,i,h,g,f,e,d,c,b,a,0,1,2,3,4,5,6,7,8,9}{z,y,x,w,v,u,t,s,r,q,p,o,n,m,l,k,j,i,h,g,f,e,d,c,b,a,0,1,2,3,4,5,6,7,8,9} |
+	tr " " "\n" >$XDG_CACHE_HOME/dictionary/dictionary-2
+	head -1 $XDG_CACHE_HOME/dictionary/dictionary-2
+	tail -1 $XDG_CACHE_HOME/dictionary/dictionary-2
+	;;
+	-3)
+	echo {z,y,x,w,v,u,t,s,r,q,p,o,n,m,l,k,j,i,h,g,f,e,d,c,b,a,0,1,2,3,4,5,6,7,8,9}{z,y,x,w,v,u,t,s,r,q,p,o,n,m,l,k,j,i,h,g,f,e,d,c,b,a,0,1,2,3,4,5,6,7,8,9}{z,y,x,w,v,u,t,s,r,q,p,o,n,m,l,k,j,i,h,g,f,e,d,c,b,a,0,1,2,3,4,5,6,7,8,9} |
+	tr " " "\n" >$XDG_CACHE_HOME/dictionary/dictionary-3
+	head -1 $XDG_CACHE_HOME/dictionary/dictionary-3
+	tail -1 $XDG_CACHE_HOME/dictionary/dictionary-3
+	;;
+	-1a)
+	echo {z..a} |
+	tr " " "\n" >$XDG_CACHE_HOME/dictionary/dictionary-1
+	head -1 $XDG_CACHE_HOME/dictionary/dictionary-1
+	tail -1 $XDG_CACHE_HOME/dictionary/dictionary-1
+	;;
+	-2a)
+	echo {z..a}{z..a} |
+	tr " " "\n" >$XDG_CACHE_HOME/dictionary/dictionary-2
+	head -1 $XDG_CACHE_HOME/dictionary/dictionary-2
+	tail -1 $XDG_CACHE_HOME/dictionary/dictionary-2
+	;;
+	-3a)
+	echo {z..a}{z..a}{z..a} |
+	tr " " "\n" >$XDG_CACHE_HOME/dictionary/dictionary-3
+	head -1 $XDG_CACHE_HOME/dictionary/dictionary-3
+	tail -1 $XDG_CACHE_HOME/dictionary/dictionary-3
+	;;
+	-1n)
+	echo {z,y,x,w,v,u,t,s,r,q,p,o,n,m,l,k,j,i,h,g,f,e,d,c,b,a,0,1,2,3,4,5,6,7,8,9} |
+	tr " " "\n" | grep "[0-9]" >$XDG_CACHE_HOME/dictionary/dictionary-1
+	head -1 $XDG_CACHE_HOME/dictionary/dictionary-1
+	tail -1 $XDG_CACHE_HOME/dictionary/dictionary-1
+	;;
+	-2n)
+	echo {z,y,x,w,v,u,t,s,r,q,p,o,n,m,l,k,j,i,h,g,f,e,d,c,b,a,0,1,2,3,4,5,6,7,8,9}{z,y,x,w,v,u,t,s,r,q,p,o,n,m,l,k,j,i,h,g,f,e,d,c,b,a,0,1,2,3,4,5,6,7,8,9} |
+	tr " " "\n" | grep "[0-9]" >$XDG_CACHE_HOME/dictionary/dictionary-2
+	head -1 $XDG_CACHE_HOME/dictionary/dictionary-2
+	tail -1 $XDG_CACHE_HOME/dictionary/dictionary-2
+	;;
+	-3n)
+	echo {z,y,x,w,v,u,t,s,r,q,p,o,n,m,l,k,j,i,h,g,f,e,d,c,b,a,0,1,2,3,4,5,6,7,8,9}{z,y,x,w,v,u,t,s,r,q,p,o,n,m,l,k,j,i,h,g,f,e,d,c,b,a,0,1,2,3,4,5,6,7,8,9}{z,y,x,w,v,u,t,s,r,q,p,o,n,m,l,k,j,i,h,g,f,e,d,c,b,a,0,1,2,3,4,5,6,7,8,9} |
+	tr " " "\n" | grep "[0-9]" >$XDG_CACHE_HOME/dictionary/dictionary-3
+	head -1 $XDG_CACHE_HOME/dictionary/dictionary-3
+	tail -1 $XDG_CACHE_HOME/dictionary/dictionary-3
+	;;
+esac
