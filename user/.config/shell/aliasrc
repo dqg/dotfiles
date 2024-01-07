@@ -1,32 +1,32 @@
 #!/bin/sh
 
-ll() { ls -Fahl --color=always --group-directories-first --time-style="+%Y/%m/%d" $@ | grep -v "^total"; }
-rg() { doas grep --color=always --exclude-dir=.git --exclude-dir=.cache -nr $1 $(echo * .* | sed "s/\.\?\*//g") 2>/dev/null; }
-sdu() {
-	doas du -Lh -d 1 $@ 2>/dev/null | sort -hr |
-	sed "/^[0-9.]*G/s/^/[31m/
-	/^[0-9.]*M/s/^/[33m/
-	/^[0-9]/s/^/[32m/
-	s/\t\(\.\/\)\?/\t[1;34m/
-	s/$/[0m/"
+ll() { \ls -Fahl --color=always --group-directories-first --time-style="+%Y/%m/%d" $@ | grep -v "^total"; }
+rg() { doas grep --color=always --exclude-dir=.git --exclude-dir=.cache -nr $1 $2 2>/dev/null; }
+fd() {
+	set -- $(echo "$1" | sed "s|^^|/|; s|\.|[^/]|g") $2
+	doas find ${2:-/} 2>/dev/null | grep --color=auto "$1"
+}
+fdt() { doas find / -type f -newermt "${1:-10} seconds ago" ! -path "/proc/*" ! -path "/sys/*" 2>/dev/null; }
+lt() {
+	x="$1"
+	shift
+	time (for x in $(seq $x); do
+	$@ >/dev/null 2>&1
+	done)
+	unset x
+}
+txz() {
+	[ -d "$1" ] && tar -c $1 | pv -s $(du -sb $1 | cut -f 1) | xz -9 >$1.txz
+	[ -f "$1" ] && pv $1 | xz -9 >$1.xz
+	echo "[1;31m$(du -s $1 | cut -f 1)[0m -> [1;32m$(du $1.*xz | cut -f 1)[0m"
+	echo "[1;31m$(du -sh $1 | cut -f 1)[0m -> [1;32m$(du -h $1.*xz | cut -f 1)[0m"
 }
 
-manall() {
-	rm /tmp/output
-	for x in 1 2 3 4 5 6 7 8; do
-		man $x $1 >>/tmp/output 2>/dev/null
-	done; unset x
-	[ -s "/tmp/output" ] && LESS="--prompt=\ Manual page $1(all) line %l?L/%L ?e(END):%p\%" bat -p -l man /tmp/output
-}
-unpkg() { tar --zstd -xf $1 -C /tmp && mv -v /tmp/usr .; }
-txz() { XZ_OPT="-9" tar -Jcvf $1.txz $1; }
-
-for x in chown chmod shutdown reboot mount umount ln su vi cfdisk find pacman; do
+for x in cut awk tr sed grep cat chown chmod shutdown reboot mount umount ln su cfdisk pacman; do
   alias $x="doas $x"
 done; unset x
 
 alias \
-	man="manall" \
 	ls="ls -Fa --color=auto --group-directories-first" \
 	grep="grep --color=auto" \
 	diff="diff -s --color=auto" \
@@ -34,6 +34,8 @@ alias \
 	mv="doas mv -iv" \
 	rm="doas rm -Iv" \
 	sdn="shutdown -h now" \
+	dash="dash -V" \
+	dl="cd ~/Downloads" \
 	ka="killall" \
 	p="pacman" \
 	v="nvim" \

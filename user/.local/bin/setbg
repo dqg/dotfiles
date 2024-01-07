@@ -1,0 +1,15 @@
+#!/bin/python
+
+import requests
+
+x = "?sorting=favorites\
+&atleast=1920x1080\
+&ratios=16x9\
+&page="
+l1, l2, l3 = [], [], []
+for n in range(1, 11):
+    l1.append(f"https://wallhaven.cc/api/v1/search{x}{n}")
+
+r = requests.get(l1).json()
+
+print(r)

@@ -7,8 +7,9 @@ export XDG_CONFIG_HOME="$HOME/.config"
 export XDG_DATA_HOME="$HOME/.local/share"
 export XDG_CACHE_HOME="$HOME/.cache"
 
+export MANROFFOPT="-c"
+export MANPAGER="sh -c 'col -bx | bat -l man -p'"
 export LESSKEYIN="$XDG_CONFIG_HOME/less/lesskey"
-export FZF_DEFAULT_OPTS="--layout=reverse --height 40%"
 export ZDOTDIR="$XDG_CONFIG_HOME/zsh"
 export GNUPGHOME="$XDG_DATA_HOME/gnupg"
 export PASSWORD_STORE_DIR="$XDG_DATA_HOME/password-store"
@@ -19,5 +20,4 @@ export HISTSIZE="10000000"
 export SAVEHIST="10000000"
 export HISTFILE="$XDG_CACHE_HOME/zsh/history"
 
-doas ydotoold -p $XDG_RUNTIME_DIR/.ydotool_socket -P 777 2>/dev/null &
 [ "$(tty)" = "/dev/tty1" ] && Hyprland

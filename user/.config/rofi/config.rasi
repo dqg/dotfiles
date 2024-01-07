@@ -1,0 +1,49 @@
+configuration {
+	modi: "run,drun,calc,window";
+	display-run: "  Run ";
+	display-drun: " 󰀘 Apps ";
+	display-calc: " 󰪚 Calc ";
+	display-window: " 󰕰 Window ";
+	show-icons: true;
+	sidebar-mode: true;
+
+	kb-row-up: "Up,Control+k";
+	kb-row-down: "Down,Control+j";
+	kb-mode-previous: "Shift+Left,Control+h";
+	kb-mode-next: "Shift+Right,Control+l";
+
+	kb-remove-to-eol: "";
+	kb-accept-entry: "Return";
+	kb-remove-char-back: "BackSpace";
+	kb-mode-complete: "";
+}
+
+* {
+	font: "JetBrainsMono NF 10";
+	bg: #1e1e2e;
+	fg: #cdd6f4;
+	blue: #89b4fa;
+}
+
+window {
+	border-radius: 10px;
+	border-color: #cba6f7;
+	background-color: #1e1e2e;
+}
+
+#element.normal.normal {
+	background-color: @bg;
+	text-color: @fg;
+}
+#element.alternate.normal {
+	background-color: @bg;
+	text-color: @fg;
+}
+#element.normal.active {
+	background-color: @bg;
+	text-color: @fg;
+}
+#element.alternate.active {
+	background-color: @bg;
+	text-color: @fg;
+}
