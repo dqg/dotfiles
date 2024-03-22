@@ -1,0 +1,33 @@
+#!/bin/sh
+
+for i in su find chown chmod shutdown reboot mount umount cfdisk pacman; do
+    alias $i="sudo $i"
+done; unset i
+
+alias cp="cp -v"
+alias mv="sudo mv -v"
+alias rm="sudo rm -v"
+
+alias diff="diff -s --color=auto"
+alias grep="sudo grep --color=auto"
+alias rg="grep -rn --exclude-dir=.git"
+alias ls="ls -Fa --color=always --group-directories-first"
+
+alias p="yay --mflags '--skippgpcheck'"
+alias v="nvim"
+alias ka="killall"
+alias sv="sudo nvim"
+alias sdn="shutdown -h now"
+
+alias gst="git status -sb"
+alias gd="git diff"
+alias ga="git add"
+alias gc="git commit --allow-empty-message -m ''"
+alias gp="git push"
+
+ll() { ls -lh --time-style="+%Y/%m/%d" $@ | grep -v "^total"; }
+fd() { find ${2:-/} -name $1 2>/dev/null; }
+ft() {
+    find ${2:-/} -newermt "${1:-5} seconds ago" -type f \
+    ! -path "/dev/*" ! -path "/sys/*" ! -path "/proc/*" 2>/dev/null
+}

@@ -1,0 +1,10 @@
+#!/bin/sh
+
+xrandr -s 1920x1080
+
+setbg &
+xcompmgr &
+unclutter &
+
+dwmblocks &
+exec dwm

@@ -1,0 +1,20 @@
+#!/bin/sh
+
+for battery in /sys/class/power_supply/BAT?; do
+    [ -n "$capacity" ] && printf " "
+    case $(cat $battery/status) in
+        "Full") status="⚡" ;;
+        "Discharging") status="🔋" ;;
+        "Charging") status="🔌" ;;
+        "Not charging") status="🛑" ;;
+        "Unknown") status="♻️" ;;
+        *) exit 1 ;;
+    esac
+    capacity=$(cat $battery/capacity)
+
+    [ "$status" = "🔋" ] && [ "$capacity" -le 25 ] && warn="❗"
+    printf "$status$warn$capacity%%"
+    unset warn
+done
+
+printf "\n"
