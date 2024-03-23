@@ -21,4 +21,4 @@ echo '{}' >~/.mozilla/firefox/user/extensions.json
 exit 0
 }
 
-firefox -P user $@ >/dev/null 2>&1
+firefox -P user $@
