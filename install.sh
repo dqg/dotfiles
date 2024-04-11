@@ -23,6 +23,24 @@ for i in dwm st dmenu dwmblocks; do
     (cd ~/.local/src/$i && make install)
 done
 
+if [ -d vsc ]; then
+    for i in vsc/*; do
+        sudo -u user codium --install-extension $i
+    done
+else
+    sudo -u user codium --install-extension ms-python.python
+    sudo -u user codium --install-extension vscodevim.vim
+    sudo -u user codium --install-extension Catppuccin.catppuccin-vsc
+    sudo -u user codium --install-extension PKief.material-icon-theme
+    sudo -u user codium --install-extension KevinRose.vsc-python-indent
+    sudo -u user codium --install-extension oderwat.indent-rainbow
+
+    mv ~/.config/VSCodium/CachedExtensionVSIXs vsc
+    for f in vsc/*; do
+        mv -v $f $f.vsix
+    done
+fi
+
 mv /tmp/pkg/* /var/cache/pacman/pkg
 rm -r /tmp/pkg
 chown -R user:wheel ~

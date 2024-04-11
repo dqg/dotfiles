@@ -8,11 +8,18 @@ xcompmgr
 unclutter
 xorg-xrandr
 
-pamixer
 neofetch
 htop-vim
 python-pywal
 python-pywalfox
+
+neovim
+vscodium-bin
+firefox
+geckodriver
+python-lxml
+python-selenium
+selenium-manager
 
 lf
 bat
@@ -24,14 +31,12 @@ ttf-jetbrains-mono-nerd
 mpv
 pass
 nsxiv
-neovim
-firefox
-protonvpn-cli
-
-git
-wget
+pamixer
+pulseaudio
 
 jq
+git
+wget
 unzip
 man-db
 dashbinsh

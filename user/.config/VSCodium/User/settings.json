@@ -1,0 +1,10 @@
+{
+    "editor.fontSize": 12,
+    "editor.fontFamily": "JetBrainsMono NF",
+    "editor.fontLigatures": true,
+    "workbench.colorTheme": "Catppuccin Mocha",
+    "workbench.iconTheme": "material-icon-theme",
+    "workbench.startupEditor": "none",
+    "security.workspace.trust.enabled": false,
+    "vim.useSystemClipboard": true
+}

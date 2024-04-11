@@ -1,6 +1,7 @@
 #!/bin/sh
 
 xrandr -s 1920x1080
+xrdb ~/.config/x11/xresources
 
 setbg &
 xcompmgr &
