@@ -6,5 +6,8 @@
     "workbench.iconTheme": "material-icon-theme",
     "workbench.startupEditor": "none",
     "security.workspace.trust.enabled": false,
-    "vim.useSystemClipboard": true
+    "vim.useSystemClipboard": true,
+    "cSpell.enableFiletypes": [
+        "!plaintext"
+    ]
 }

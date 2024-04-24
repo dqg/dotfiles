@@ -1,0 +1,20 @@
+# uBlock Origin
+cjpalhdlnbpafiamejdnhcphjbkeiagm
+# Dark Reader
+eimadpbcbfnmbkopoojfekhnkhdbieeh
+# Google Translate
+aapbdbdomjkkjkaonfhkkikfgjllcleb
+# ClearURLs
+lckanjgmijmafbedllaakclkaicjfmnk
+# I still don't care about cookies
+edibdbjcniadpccecjdfdjjppcpchdlm
+# Return YouTube Dislike
+gebbhagfogifgggkldgodflihgfeippi
+# Vimium
+dbepggeogbaibhgnhhndojpepiihcmeb
+# Absolute Enable Right Click & Copy
+jdocbkpgdakpekjlhemmfcncgdjeiika
+# Search by Image
+cnojnbdhbhnkbcieeekonklommdnndci
+# View Image
+jpcmhcelnjdmblfmjabdeclccemkghjk

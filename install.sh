@@ -13,7 +13,7 @@ if [ -f pkg2.tar.zst ]; then
 else
 	o="-Sy --noconfirm --cachedir /tmp/pkg"
 	pacman $o yay
-	sudo -u user yay --mflags "--skippgpcheck" $o $(cat list)
+	sudo -u user yay --mflags "--skippgpcheck" $o $(cat files/pkg.txt)
 	mv -v ~/.cache/yay/*/*.zst /tmp/pkg
 	tar --zstd -cf pkg2.tar.zst -C /tmp pkg
 fi
@@ -23,18 +23,17 @@ for i in dwm st dmenu dwmblocks; do
     (cd ~/.local/src/$i && make install)
 done
 
+ln -sv codium /bin/code
+ln -sv google-chrome-unstable /bin/chrome
+files/crx.sh
+rm -v /usr/lib/python*/EXTERNALLY-MANAGED
+
 if [ -d vsc ]; then
-    for i in vsc/*; do
-        sudo -u user codium --install-extension $i
+    for f in vsc/*; do
+        sudo -u user code --install-extension $f
     done
 else
-    sudo -u user codium --install-extension ms-python.python
-    sudo -u user codium --install-extension vscodevim.vim
-    sudo -u user codium --install-extension Catppuccin.catppuccin-vsc
-    sudo -u user codium --install-extension PKief.material-icon-theme
-    sudo -u user codium --install-extension KevinRose.vsc-python-indent
-    sudo -u user codium --install-extension oderwat.indent-rainbow
-
+    sudo -u user code $(cat files/vsc.txt)
     mv ~/.config/VSCodium/CachedExtensionVSIXs vsc
     for f in vsc/*; do
         mv -v $f $f.vsix

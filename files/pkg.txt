@@ -8,18 +8,13 @@ xcompmgr
 unclutter
 xorg-xrandr
 
+neovim
 neofetch
 htop-vim
-python-pywal
-python-pywalfox
 
-neovim
-vscodium-bin
-firefox
-geckodriver
 python-lxml
-python-selenium
-selenium-manager
+vscodium-bin
+google-chrome-dev
 
 lf
 bat
@@ -34,12 +29,16 @@ nsxiv
 pamixer
 pulseaudio
 
-jq
 git
 wget
+gdown
+python-pip
+
+jq
 unzip
 man-db
-dashbinsh
+ntfs-3g
+android-tools
 
 starship
 zsh-vi-mode

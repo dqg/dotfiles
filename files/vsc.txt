@@ -1,0 +1,9 @@
+--install-extension ms-python.python
+--install-extension vscodevim.vim
+--install-extension catppuccin.catppuccin-vsc
+--install-extension pkief.material-icon-theme
+--install-extension kevinrose.vsc-python-indent
+--install-extension oderwat.indent-rainbow
+--install-extension streetsidesoftware.code-spell-checker
+--install-extension timonwong.shellcheck
+--install-extension tabnine.tabnine-vscode
