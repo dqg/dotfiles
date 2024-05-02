@@ -1,0 +1,10 @@
+{
+  "browser": {
+    "enabled_labs_experiments": [
+      "chrome-labs@3",
+      "show-avatar-button@3",
+      "hide-sidepanel-button",
+      "force-dark-mode"
+    ]
+  }
+}

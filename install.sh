@@ -24,8 +24,8 @@ for i in dwm st dmenu dwmblocks; do
 done
 
 ln -sv codium /bin/code
-ln -sv google-chrome-unstable /bin/chrome
-files/crx.sh
+ln -sv chromium /bin/chrome
+files/chrome.sh
 rm -v /usr/lib/python*/EXTERNALLY-MANAGED
 
 if [ -d vsc ]; then

@@ -14,7 +14,7 @@ htop-vim
 
 python-lxml
 vscodium-bin
-google-chrome-dev
+ungoogled-chromium-bin
 
 lf
 bat
@@ -38,7 +38,6 @@ jq
 unzip
 man-db
 ntfs-3g
-android-tools
 
 starship
 zsh-vi-mode
