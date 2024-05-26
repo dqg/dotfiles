@@ -3,6 +3,7 @@ setopt AUTO_CD
 setopt INTERACTIVE_COMMENTS
 setopt COMPLETE_IN_WORD
 setopt HIST_IGNORE_ALL_DUPS
+setopt INC_APPEND_HISTORY
 
 HISTSIZE=10000000
 SAVEHIST=10000000
@@ -15,12 +16,12 @@ compinit
 _comp_options+=(globdots)
 
 eval "$(starship init zsh)"
-. ~/.config/shell/aliasrc 2>/dev/null
-. /usr/share/zsh/plugins/catppuccin*.zsh 2>/dev/null
-. /usr/share/zsh/plugins/zsh-vi-mode/zsh-vi-mode.zsh 2>/dev/null
-. /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh 2>/dev/null
-. /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh 2>/dev/null
-. /usr/share/zsh/plugins/zsh-history-substring-search/zsh-history-substring-search.zsh 2>/dev/null
+. ~/.config/shell/aliasrc
+. /usr/share/zsh/plugins/catppuccin*.zsh
+. /usr/share/zsh/plugins/zsh-vi-mode/zsh-vi-mode.zsh
+. /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
+. /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+. /usr/share/zsh/plugins/zsh-history-substring-search/zsh-history-substring-search.zsh
 
 bindkey "^[[A" history-substring-search-up
 bindkey "^[[B" history-substring-search-down

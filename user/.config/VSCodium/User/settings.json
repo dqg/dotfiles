@@ -7,7 +7,4 @@
     "workbench.startupEditor": "none",
     "security.workspace.trust.enabled": false,
     "vim.useSystemClipboard": true,
-    "cSpell.enableFiletypes": [
-        "!plaintext"
-    ]
 }

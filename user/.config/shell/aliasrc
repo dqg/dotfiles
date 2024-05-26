@@ -1,22 +1,22 @@
 #!/bin/sh
 
-for i in su find chown chmod shutdown reboot mount umount cfdisk pacman; do
-    alias $i="sudo $i"
-done; unset i
+for x in su chown find shutdown reboot mount umount; do
+    alias $x="sudo $x"
+done; unset x
 
 alias cp="cp -v"
-alias mv="sudo mv -v"
-alias rm="sudo rm -v"
+alias mv="mv -v"
+alias rm="rm -vf"
 
 alias diff="diff -s --color=auto"
 alias grep="sudo grep --color=auto"
 alias rg="grep -rn --exclude-dir=.git"
 alias ls="ls -Fa --color=always --group-directories-first"
 
-alias p="yay --mflags '--skippgpcheck'"
 alias v="nvim"
-alias ka="killall"
 alias sv="sudo nvim"
+alias p="yay --mflags '--skippgpcheck'"
+alias ka="killall"
 alias sdn="shutdown -h now"
 
 alias gst="git status -sb"

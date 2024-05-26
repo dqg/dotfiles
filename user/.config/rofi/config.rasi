@@ -1,0 +1,48 @@
+configuration {
+    modes: "drun,emoji,calc";
+    show-icons: true;
+    font: "JetBrainsMono NF 12,NotoColorEmoji 12";
+    terminal: "footclient";
+}
+
+* {
+    bg: #1e1e2e;
+    fg: #cdd6f4;
+}
+
+listview { border: 0px; }
+inputbar {
+    background-color: #11111b;
+    text-color: @fg;
+    border: 0px;
+    border-radius: 5px;
+    padding: 10px;
+}
+entry,
+prompt { text-color: @fg; }
+
+window {
+    background-color: @bg;
+    border: 2px;
+    border-radius: 10px;
+    border-color: #cba6f7;
+}
+element { padding: 5px; }
+element-icon { size: 30px; }
+element.selected.urgent,
+element.selected.active,
+element.selected.normal {
+    background-color: #313244;
+    text-color: @fg;
+    border: 0px;
+    border-radius: 5px;
+}
+element.alternate.urgent,
+element.alternate.active,
+element.alternate.normal,
+element.normal.urgent,
+element.normal.active,
+element.normal.normal {
+    background-color: @bg;
+    text-color: @fg;
+}

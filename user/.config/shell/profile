@@ -21,4 +21,4 @@ eval "$(dircolors)"
 export MANROFFOPT="-c"
 export MANPAGER="sh -c 'col -bx | bat -l man -p'"
 
-[ "$(tty)" = "/dev/tty1" ] && startx
+[ "$(tty)" = "/dev/tty1" ] && exec Hyprland
