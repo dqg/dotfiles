@@ -1,4 +1,0 @@
-#!/bin/sh
-
-pkgs=$(yay -Qu | wc -l)
-[ "$pkgs" -eq 0 ] || echo "📦$pkgs"

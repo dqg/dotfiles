@@ -1,38 +1,38 @@
 # gui
 hyprland
-foot
-rofi-calc
-rofi-emoji
+waybar
+kitty
 rofi-wayland
-vscodium-bin
-ungoogled-chromium-bin
+rofi-calc-git
+rofi-emoji-git
 mpv
-nsxiv
-sqlitebrowser
-noto-fonts-emoji
-ttf-jetbrains-mono-nerd
+firefox
+vscodium-bin
+zathura-pdf-mupdf
 
 # cli
-nmap
 neovim
-neofetch
 htop-vim
-lf
-bat
-chafa
-ffmpegthumbnailer
+fastfetch
 starship
 zsh-vi-mode
 zsh-autosuggestions
 zsh-syntax-highlighting
 zsh-history-substring-search
 pass
+wireplumber
+wl-clipboard
 wget
+yt-dlp
 jq
 unzip
 man-db
 ntfs-3g
-python-lxml
-wl-clipboard
-pamixer
-pulseaudio
+
+# lf
+lf
+bat
+poppler
+ffmpegthumbnailer
+noto-fonts-emoji
+ttf-jetbrains-mono-nerd

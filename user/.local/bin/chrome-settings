@@ -1,9 +1,0 @@
-#!/bin/sh
-
-killall -q chromium
-cd ~/.config/chromium/Default
-jq "." Preferences >file1
-chrome
-jq "." Preferences >file2
-diff -s --color=auto file?
-rm -v file?

@@ -1,7 +1,15 @@
+# shellcheck disable=all
 set icons
-set sixel
-set previewer "~/.config/lf/scope"
-set hidden
+set previewer ~/.config/lf/scope
+set cleaner ~/.config/lf/cleaner
+
+cmd open ${{
+  case $(file -Lb --mime-type $f) in
+    */pdf) zathura $fx ;;
+    video/*) mpv $f ;;
+    text/*) nvim $f ;;
+  esac
+}}
 
 cmd extract ${{
   set -f
@@ -9,7 +17,6 @@ cmd extract ${{
     *.tar.zst) tar --zstd -xf $f;;
     *.tar.xz|*.txz) tar -Jxf $f;;
     *.tar.gz|*.tgz) tar -zxf $f;;
-    *.tar.bz2|*.tbz2) tar -jxf $f;;
     *.zip) unzip $f;;
   esac
 }}

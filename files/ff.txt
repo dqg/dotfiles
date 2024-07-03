@@ -1,0 +1,10 @@
+ublock-origin
+darkreader
+simple-translate
+clearurls
+istilldontcareaboutcookies
+return-youtube-dislikes
+vimium-ff
+absolute-enable-right-click
+search_by_image
+view-image

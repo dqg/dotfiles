@@ -1,21 +1,31 @@
 #!/bin/sh
 
-img() { chafa -s "$2x$3" --polite on --animate off $1; }
+image() {
+	kitten icat --stdin no --transfer-mode file --place "${2}x${3}@${4}x${5}" "$1" >/dev/tty
+	exit 1
+}
 
-case $(file -Lb --mime-type $1) in
-text/*) bat -fp $1 ;;
-video/*)
-	f=~/.cache/lf/thumb.$(sha256sum $1 | cut -d " " -f 1)
-	[ -f "$f" ] || ffmpegthumbnailer -s 0 -o $f -i $1
-	img $f $2 $3
-	;;
-image/svg*)
-	f=~/.cache/lf/thumb.$(sha256sum $1 | cut -d " " -f 1).png
-	[ -f "$f" ] || convert -background none -density 1000 $1 $f
-	img $f $2 $3
-	;;
-image/*) img $1 $2 $3 ;;
-application/json) jq -C "." $1 ;;
-application/zip) zipinfo -1 $1 | grep -E "^([^/]*/?){2}$" ;;
-application/*) tar --exclude="*/*/*" -tf $1 ;;
+case $(file -Lb --mime-type "$1") in
+	text/*) bat -fp "$1" ;;
+	video/*)
+		f=~/.cache/lf/thumb.$(sha256sum "$1" | cut -d" " -f1)
+		[ -f "$f" ] || ffmpegthumbnailer -s 0 -o "$f" -i "$1"
+		image "$f" "$2" "$3" "$4" "$5"
+		;;
+	image/svg+xml)
+		f=~/.cache/lf/thumb.$(sha256sum "$1" | cut -d" " -f1).png
+		[ -f "$f" ] || convert -background none -density 1000 "$1" "$f"
+		image "$f" "$2" "$3" "$4" "$5"
+		;;
+	image/*) image "$1" "$2" "$3" "$4" "$5" ;;
+	*/pdf)
+		f=~/.cache/lf/thumb.$(sha256sum "$1" | cut -d" " -f1)
+		[ -f "$f.jpg" ] || pdftoppm -jpeg -f 1 -singlefile "$1" "$f"
+		image "$f.jpg" "$2" "$3" "$4" "$5"
+		;;
+	application/json) jq -C "." "$1" ;;
+	application/zip) zipinfo -1 "$1" ;;
+	application/zstd) tar --zstd -tf "$1" ;;
+	application/x-xz) tar -Jtf "$1" ;;
+	application/gzip) tar -ztf "$1" ;;
 esac

@@ -1,0 +1,3 @@
+#!/bin/sh
+
+kitten icat --stdin no --transfer-mode file --clear >/dev/tty

@@ -1,0 +1,32 @@
+* {
+    font-family: JetBrainsMono NF;
+    font-size: 12px;
+}
+
+window#waybar {
+    background-color: #000000;
+    color: #ffffff;
+}
+
+#custom-clock,
+#custom-packages,
+#battery,
+#network,
+#wireplumber,
+#memory {
+    padding: 0 5px;
+}
+
+#workspaces button {
+    padding: 0 5px;
+    color: #ffffff;
+}
+
+#workspaces button.visible {
+    background-color: #6c7086;
+}
+
+#workspaces button:hover {
+    color: #000000;
+    background: #f38ba8;
+}

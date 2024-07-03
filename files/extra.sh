@@ -1,24 +1,29 @@
-#!/bin/bash
+#!/bin/sh
 
 set -e
-mkdir -p /usr/share/chromium/extensions
-# base url
-l="https://clients2.google.com/service/update2/crx"
-# query string
-l+="?response=redirect&acceptformat=crx2,crx3&prodversion=200.0"
-# extension parameter
-l+="&x=uc%26id%3D"
+rm -r /tmp/pkg
+ln -sv codium /bin/code
 
-wget -q --show-progress -P /usr/share/zsh/plugins "https://raw.githubusercontent.com/catppuccin/zsh-syntax-highlighting/main/themes/catppuccin_mocha-zsh-syntax-highlighting.zsh"
-sudo -u user code $(cat files/vsc.txt)
+if [ -f pkg3.tar ]; then
+    tar -xf pkg3.tar -C /tmp
+    for f in /tmp/pkg/CachedExtensionVSIXs/*; do sudo -u user code --install-extension "$f"; done
+else
+    while read -r x; do
+        wget -q --show-progress -P /tmp/pkg/extensions --trust-server-names "https://addons.mozilla.org/firefox/downloads/latest/$x/latest.xpi"
+    done < files/ff.txt
+    for f in /tmp/pkg/extensions/*; do
+        id=$(unzip -p "$f" manifest.json | sed "s/applications/browser_specific_settings/" | jq -r ".browser_specific_settings.gecko.id")
+        mv -v "$f" /tmp/pkg/extensions/"$id".xpi
+    done
 
-while read -r x; do
-    wget -q --show-progress --trust-server-names -P ~/.local/share/chrome "$l$x"
-done < <(grep -v "#" files/crx.txt)
+    sudo -u user code $(cat files/vsc.txt)
+    cp -r ~/.config/VSCodium/CachedExtensionVSIXs /tmp/pkg
+    for f in /tmp/pkg/CachedExtensionVSIXs/*; do mv -v "$f" "$f".vsix; done
 
-for f in ~/.local/share/chrome/*; do
-    x=$(basename "${f,,}" .crx)
-    v="${f#*_}" v="${v%.*}" v="${v//_/.}"
-    echo "$v"
-    printf '{\n\t"external_crx": "%s",\n\t"external_version": "%s"\n}\n' "$f" "$v" >/usr/share/chromium/extensions/"$x".json
-done
+    wget -q --show-progress -P /tmp/pkg "https://raw.githubusercontent.com/catppuccin/zsh-syntax-highlighting/main/themes/catppuccin_mocha-zsh-syntax-highlighting.zsh"
+    tar -cf pkg3.tar -C /tmp pkg
+fi
+
+mv /tmp/pkg/extensions ~/.mozilla/firefox/user
+mv -v /tmp/pkg/catppuccin_mocha-zsh-syntax-highlighting.zsh /usr/share/zsh/plugins
+rm -r /tmp/pkg

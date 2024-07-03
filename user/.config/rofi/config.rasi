@@ -2,7 +2,7 @@ configuration {
     modes: "drun,emoji,calc";
     show-icons: true;
     font: "JetBrainsMono NF 12,NotoColorEmoji 12";
-    terminal: "footclient";
+    terminal: "kitty";
 }
 
 * {
